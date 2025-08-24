@@ -12,7 +12,27 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// ✅ Allowed origins for frontend (GoDaddy + local dev)
+const allowedOrigins = [
+  "https://cybersomaliland.com",       // main domain
+  "https://cybersomaliland.com/user",  // user app
+  "https://cybersomaliland.com/admin", // admin app
+  "http://localhost:5173"              // Vite local dev (optional)
+];
+
+// ✅ Configure CORS
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked for origin: " + origin));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // ✅ Root test
@@ -38,5 +58,5 @@ app.use('/api/services', serviceRoutes);
 app.use("/api/admins", adminRoutes);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
