@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "app_id": "app_66b0d4e9-0808-40b5-abbd-598fae506334",
+      "org_id": "user_faa1a835-f18b-4a39-a89c-41f7cffcd4ef",
+      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_66b0d4e9-0808-40b5-abbd-598fae506334.git",
+      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_66b0d4e9-0808-40b5-abbd-598fae506334.git",
+      "name": "booking-backend",
+      "alias": "booking-backend"
+    }
+  ]
+}
